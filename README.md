@@ -3,6 +3,9 @@
 A small typing-speed practice app built with plain HTML, CSS, and JavaScript.
 It has no dependencies, build step, Node.js, Bun, or server-side code.
 
+Try Here:
+https://ozkl.github.io/typefast
+
 ## Run locally
 
 Open `index.html` directly in a browser, or serve this directory with any static
