@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Typefast — Typing speed practice</title>
+  <meta name="description" content="A focused typing test for speed and accuracy.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell" id="app">
+    <header class="topbar">
+      <a class="brand" href="#">typefast<span>.</span></a>
+      <div class="controls">
+        <label class="mode-toggle">
+          <input id="advance-on-mistakes" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+          <span>Advance on mistakes</span>
+        </label>
+        <button class="restart-button" id="restart" type="button">Restart</button>
+        <button class="text-button" id="custom">Use my own text</button>
+      </div>
+    </header>
+    <section class="hero" aria-label="Typing test">
+      <div class="eyebrow"><span>Typing test</span><span id="progress-label">0% complete</span></div>
+      <div class="progress"><span id="progress"></span></div>
+      <div class="type-area" id="type-area" aria-live="polite"></div>
+      <input id="capture" class="key-capture" aria-label="Type the displayed text" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <p class="hint" id="hint">Mistakes are marked and skipped. Use Backspace to return and correct them.</p>
+    </section>
+  </main>
+  <div id="modal"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
