@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Typefast — Typing speed practice</title>
   <meta name="description" content="A focused typing test for speed and accuracy.">
+  <script>
+    (() => {
+      const saved = localStorage.getItem("typefast-theme");
+      const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -16,6 +23,11 @@
           <input id="advance-on-mistakes" type="checkbox" checked>
           <span class="switch" aria-hidden="true"></span>
           <span>Advance on mistakes</span>
+        </label>
+        <label class="mode-toggle">
+          <input id="dark-mode" type="checkbox">
+          <span class="switch" aria-hidden="true"></span>
+          <span>Dark mode</span>
         </label>
         <button class="restart-button" id="restart" type="button">Restart</button>
         <button class="text-button" id="custom">Use my own text</button>

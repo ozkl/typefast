@@ -15,6 +15,7 @@ const modal = document.querySelector("#modal");
 const progress = document.querySelector("#progress");
 const progressLabel = document.querySelector("#progress-label");
 const advanceOnMistakes = document.querySelector("#advance-on-mistakes");
+const darkMode = document.querySelector("#dark-mode");
 const hint = document.querySelector("#hint");
 const esc = (value) => value.replace(/[&<>"']/g, (char) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" })[char]);
 
@@ -116,6 +117,20 @@ advanceOnMistakes.addEventListener("change", () => {
     : "Start typing anywhere. Mistakes stay in place until you press the right key.";
   capture.focus();
   render();
+});
+
+darkMode.checked = document.documentElement.dataset.theme === "dark";
+darkMode.addEventListener("change", () => {
+  const theme = darkMode.checked ? "dark" : "light";
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("typefast-theme", theme);
+  capture.focus();
+});
+
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+  if (localStorage.getItem("typefast-theme")) return;
+  document.documentElement.dataset.theme = event.matches ? "dark" : "light";
+  darkMode.checked = event.matches;
 });
 
 document.querySelector("#app").onclick = () => capture.focus();
