@@ -133,6 +133,14 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) =>
   darkMode.checked = event.matches;
 });
 
+document.addEventListener("keydown", (event) => {
+  const restartShortcut = event.key === "Enter" && (event.ctrlKey || event.metaKey);
+  const editingCustomText = event.target instanceof HTMLTextAreaElement;
+  if (!restartShortcut || editingCustomText) return;
+  event.preventDefault();
+  reset();
+});
+
 document.querySelector("#app").onclick = () => capture.focus();
 document.querySelector("#restart").onclick = (event) => { event.stopPropagation(); reset(); };
 document.querySelector("#custom").onclick = (event) => { event.stopPropagation(); openEditor(); };
